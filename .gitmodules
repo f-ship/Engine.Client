@@ -1,0 +1,9 @@
+[submodule "Core"]
+	path = Core
+	url = https://github.com/f-ship/Engine.Client.Core
+[submodule "KSP"]
+	path = KSP
+	url = https://github.com/f-ship/Engine.Client.KSP
+[submodule "Utils"]
+	path = Utils
+	url = https://github.com/f-ship/Engine.Client.Utils
