@@ -1,3 +1,4 @@
+
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -6,6 +7,8 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.composeMultiplatform)
 }
 
 group = "ship.f.engine"
@@ -45,6 +48,16 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
+            api("ship.f.engine.client:utils")
+            api("ship.f.engine.client:ksp")
+            api("ship.f.engine.client:core")
+            api("ship.f.engine.client.utils:serverdrivenui")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
+            implementation("io.ktor:ktor-client-content-negotiation:3.0.0")
+            implementation(compose.components.resources)
+            implementation(compose.material) // Only in use for opening web pages
+            implementation(compose.runtime)
         }
     }
 }
@@ -59,10 +72,4 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
-}
-
-dependencies {
-    api("ship.f.engine.client:utils")
-    api("ship.f.engine.client:ksp")
-    api("ship.f.engine.client:core")
 }
