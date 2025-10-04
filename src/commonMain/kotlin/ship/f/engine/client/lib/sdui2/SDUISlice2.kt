@@ -18,6 +18,7 @@ object SDUISlice2 : Slice<SDUIState2, SDUISubPub2>(
         ServerDrivenScreen2(
             projectName = state.value.projectName,
             resources = state.value.resources,
+            vectors = state.value.vectors,
         )
     }
 

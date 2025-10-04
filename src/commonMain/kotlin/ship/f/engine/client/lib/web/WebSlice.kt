@@ -15,7 +15,6 @@ import com.multiplatform.webview.request.WebRequestInterceptResult.Reject
 import com.multiplatform.webview.web.*
 import ship.f.engine.client.lib.web.WebSubPub.WebState
 import ship.f.engine.shared.core.Slice
-import ship.f.engine.shared.utils.serverdrivenui.action.Action.SendUrl.Intercept.InterceptAction.Param
 
 class WebSlice : Slice<WebState, WebSubPub>(
     subPubClass = WebSubPub::class
@@ -26,18 +25,16 @@ class WebSlice : Slice<WebState, WebSubPub>(
             var showWebView by mutableStateOf(true)
             if (showWebView) {
                 Box(modifier = Modifier.background(Color.White)) {
-                    val state = rememberWebViewState(it.url)
-                    val navigator = it.urlIntercept?.let { intercept ->
+                    val state = rememberWebViewState(it)
+                    val navigator = "intercept".let { intercept ->
                         rememberWebViewNavigator(
                             requestInterceptor = object : RequestInterceptor {
                                 override fun onInterceptUrlRequest(
                                     request: WebRequest,
                                     navigator: WebViewNavigator
                                 ): WebRequestInterceptResult {
-                                    return if (request.url.contains(intercept.url)) {
-                                        when (intercept.action) {
-                                            is Param -> Reject.also { showWebView = false }
-                                        }
+                                    return if (request.url.contains(intercept)) {
+                                        Reject.also { showWebView = false }
                                     } else {
                                         Allow
                                     }
@@ -54,7 +51,7 @@ class WebSlice : Slice<WebState, WebSubPub>(
                     }
                     WebView(
                         state = state,
-                        navigator = navigator ?: rememberWebViewNavigator()
+                        navigator = navigator
                     )
                 }
             }

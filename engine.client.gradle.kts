@@ -52,6 +52,7 @@ kotlin {
             api("ship.f.engine.client:ksp")
             api("ship.f.engine.client:core")
             api("ship.f.engine.client.utils:serverdrivenui")
+            api("ship.f.engine:shared")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
             implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
             implementation("io.ktor:ktor-client-content-negotiation:3.0.0")
