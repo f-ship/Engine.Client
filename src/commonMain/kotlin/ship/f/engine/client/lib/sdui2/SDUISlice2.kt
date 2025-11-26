@@ -2,7 +2,7 @@ package ship.f.engine.client.lib.sdui2
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import ship.f.engine.client.utils.serverdrivenui2.ServerDrivenScreen2
+import ship.f.engine.client.utils.serverdrivenui3.ServerDrivenScreen3
 import ship.f.engine.shared.core.Slice
 import ship.f.engine.shared.sdui2.SDUISubPub2
 import ship.f.engine.shared.sdui2.SDUISubPub2.SDUIState2
@@ -15,7 +15,12 @@ object SDUISlice2 : Slice<SDUIState2, SDUISubPub2>(
 
     @Composable
     override fun EntryPoint(state: MutableState<SDUIState2>) {
-        ServerDrivenScreen2(
+//        ServerDrivenScreen2(
+//            projectName = state.value.projectName,
+//            resources = state.value.resources,
+//            vectors = state.value.vectors,
+//        )
+        ServerDrivenScreen3(
             projectName = state.value.projectName,
             resources = state.value.resources,
             vectors = state.value.vectors,
