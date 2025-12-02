@@ -20,6 +20,7 @@ object SDUISlice2 : Slice<SDUIState2, SDUISubPub2>(
 //            resources = state.value.resources,
 //            vectors = state.value.vectors,
 //        )
+        println("EngineX: SDUISlice2 ready")
         ServerDrivenScreen3(
             projectName = state.value.projectName,
             resources = state.value.resources,
@@ -29,6 +30,7 @@ object SDUISlice2 : Slice<SDUIState2, SDUISubPub2>(
 
     @Composable
     override fun notReadyEntryPoint(state: MutableState<SDUIState2>): @Composable (() -> Unit) {
+        println("EngineX: SDUISlice2 not ready yet")
         return {
             // No need to render anything here
         }
