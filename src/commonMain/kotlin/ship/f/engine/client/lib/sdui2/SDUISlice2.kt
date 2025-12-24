@@ -20,7 +20,6 @@ object SDUISlice2 : Slice<SDUIState2, SDUISubPub2>(
 //            resources = state.value.resources,
 //            vectors = state.value.vectors,
 //        )
-        println("EngineX: SDUISlice2 ready")
         ServerDrivenScreen3(
             projectName = state.value.projectName,
             resources = state.value.resources,
