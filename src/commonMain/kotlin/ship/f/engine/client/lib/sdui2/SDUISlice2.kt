@@ -28,6 +28,7 @@ object SDUISlice2 : Slice<SDUIState2, SDUISubPub2>(
                     message = message,
                     durationMs = durationMs,
                     actionText = actionText,
+                    key = key,
                     toastType = when(toastType){
                         ToastEvent.ToastType.Error -> ServerToastEvent.ToastType.Error
                         ToastEvent.ToastType.Success -> ServerToastEvent.ToastType.Success
